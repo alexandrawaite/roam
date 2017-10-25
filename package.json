@@ -2,13 +2,13 @@
   "name": "roam",
   "version": "1.0.0",
   "description": "## Skills",
-  "main": "server.js",
+  "main": "src/server.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node src/server.js"
   },
   "repository": {
     "type": "git",
