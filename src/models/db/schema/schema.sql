@@ -7,9 +7,8 @@ CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   email VARCHAR(255) UNIQUE NOT NULL,
   encrypted_password VARCHAR(255) NOT NULL,
-  image VARCHAR(255),
-  join_date DATE NOT NULL,
-  current_city VARCHAR(255) NOT NULL
+  join_date DATE,
+  current_city VARCHAR(255) DEFAULT 'Enter current city here'
 );
 
 CREATE TABLE cities (

@@ -1,7 +1,7 @@
 {
-  "name": "roam",
+  "name": "Roam",
   "version": "1.0.0",
-  "description": "## Skills",
+  "description": "A travel community",
   "main": "src/server.js",
   "directories": {
     "test": "test"
@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/alexandrawaite/roam#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "ejs": "^2.5.7",
     "express": "^4.16.2",
@@ -34,6 +35,9 @@
     "pg-promise": "^7.0.3"
   },
   "devDependencies": {
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "nodemon": "^1.12.1"
   }
 }
