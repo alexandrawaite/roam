@@ -1,6 +1,6 @@
 const db = require('./db');
 
-const create = function(user) {
+const create = user => {
   return db.query(`
     INSERT INTO
       users (email, encrypted_password)
@@ -15,6 +15,22 @@ const create = function(user) {
   });
 }
 
+const findByEmail = email => {
+  return db.oneOrNone(
+    `
+      SELECT * FROM
+        users
+      WHERE email =$1
+    `,
+    [email]
+  )
+  .catch( error => {
+    console.error({ message: 'Error occurred while executing users.findUser',
+    arguments: arguments })
+  })
+}
+
 module.exports = {
-  create
+  create,
+  findByEmail
 };

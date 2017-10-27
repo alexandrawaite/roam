@@ -14,7 +14,7 @@ router.get('/signup', (req, res) => {
 router.post('/signup', (req, res) => {
   users.create(req.body)
   .then((user) => {
-    if (user) return res.redirect('/');
+    if (user) return res.redirect('/');//will need to redirect to the users profile page
   })
   .catch( error => next(error) );
 })
@@ -22,5 +22,9 @@ router.post('/signup', (req, res) => {
 router.get('/login', (req, res) => {
   res.render('users/login');
 });
+
+router.post('/login', (req, res) => {
+
+})
 
 module.exports = router;
