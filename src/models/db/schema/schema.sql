@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS cities;
 DROP TABLE IF EXISTS posts;
-DROP TABLE IF EXISTS users_posts;
+DROP TABLE IF EXISTS cities_posts;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
@@ -26,9 +26,4 @@ CREATE TABLE posts (
 CREATE TABLE cities_posts (
   city_id INTEGER REFERENCES cities,
   post_id INTEGER REFERENCES posts
-);
-
-CREATE TABLE users_cities (
-  user_id INTEGER REFERENCES users,
-  city_id INTEGER REFERENCES cities
 );
