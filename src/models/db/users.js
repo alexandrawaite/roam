@@ -11,9 +11,9 @@ const create = user => {
   .catch( error => {
     console.error({ message: 'Error occurred while executing users.create',
     arguments: arguments });
-    throw error
+    throw error;
   });
-}
+};
 
 const findByEmail = email => {
   return db.oneOrNone(
@@ -27,8 +27,8 @@ const findByEmail = email => {
   .catch( error => {
     console.error({ message: 'Error occurred while executing users.findUser',
     arguments: arguments })
-  })
-}
+  });
+};
 
 module.exports = {
   create,

@@ -13,7 +13,7 @@ router.get('/signup', (req, res) => {
 
 router.post('/signup', (req, res) => {
   users.create(req.body)
-  .then((user) => {
+  .then( user => {
     if (user) return res.redirect('/');//will need to redirect to the users profile page
   })
   .catch( error => next(error) );
@@ -24,7 +24,13 @@ router.get('/login', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-
+  const { email, password } = req.body
+  users.verify(email, password)
+  .then( user => {
+    console.log("Who is this?", user);
+    if (user) return res.redirect('/');//will need to redirect to the users profile page
+  })
+  .catch( error => next(error) );
 })
 
 module.exports = router;
