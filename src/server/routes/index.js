@@ -28,9 +28,9 @@ router.post('/login', (req, res) => {
   users.verify(email, password)
   .then( user => {
     console.log("Who is this?", user);
-    if (user) return res.redirect('/');//will need to redirect to the users profile page
+    if (user) return res.render('users/public_profile');//will need to redirect to the users profile page
   })
   .catch( error => next(error) );
-})
+});
 
 module.exports = router;

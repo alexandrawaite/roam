@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title>Signup</title>
-    <link rel="stylesheet" type="text/css" href="/style.css">
-  </head>
-  <body>
+<%- include ../partials/header.ejs %>
     <h1>Signup</h1>
     <form class="signup-form" action="/signup" method="POST">
+      <label>
+        <span>Full Name:</span>
+        <input type="full_name" placeholder="First and Last Name" name="full_name" required/>
+      </label>
       <label>
         <span>Email:</span>
         <input type="email" placeholder="Enter email" name="email" required/>
