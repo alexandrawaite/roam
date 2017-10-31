@@ -25,12 +25,28 @@ const findByEmail = email => {
     [email]
   )
   .catch( error => {
-    console.error({ message: 'Error occurred while executing users.findUser',
+    console.error({ message: 'Error occurred while executing users.findByEmail',
+    arguments: arguments })
+  });
+};
+
+const findById = id => {
+  return db.oneOrNone(
+    `
+      SELECT * FROM
+        users
+      WHERE id = $1
+    `,
+    [id]
+  )
+  .catch( error => {
+    console.error({ message: 'Error occurred while executing users.findById',
     arguments: arguments })
   });
 };
 
 module.exports = {
   create,
-  findByEmail
+  findByEmail,
+  findById
 };
