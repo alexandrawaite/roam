@@ -14,5 +14,9 @@
       <input type="submit" value="Login">
       <span>Not a user? <a href="/signup">Signup!</a></span>
     </form>
+
+    <% if (error === 'Invalid username or password') {%>
+      <div style="color: red;"><%= error %></div>
+    <% }%>
   </body>
 </html>

@@ -10,7 +10,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/server.js",
     "db:reset": "dropdb roam_development && createdb roam_development && npm run load_schema",
-    "load_schema": "psql -d roam_development < src/models/db/schema/schema.sql"
+    "load_schema": "psql -d roam_development < src/models/db/schema/schema.sql",
+    "load_data": "psql -d roam_development < src/models/db/seed_data.sql"
   },
   "repository": {
     "type": "git",

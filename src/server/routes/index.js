@@ -20,15 +20,20 @@ router.post('/signup', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-  res.render('users/login');
+  res.render('users/login', {error: false});
 });
 
 router.post('/login', (req, res) => {
-  const { email, password } = req.body
+  const { email, password } = req.body;
   users.verify(email, password)
-  .then( user => {
-    console.log("Who is this?", user);
-    if (user) return res.render('users/public_profile');//will need to redirect to the users profile page
+  .then( userId => {
+    if (!userId) {
+      const error = 'Invalid username or password';
+      res.render('users/login', { error: error})
+    } else {
+      req.session.user = userId;
+      res.render('users/public_profile');//will need to redirect to the users profile page
+    }
   })
   .catch( error => next(error) );
 });

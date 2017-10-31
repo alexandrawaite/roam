@@ -14,6 +14,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(methodOverride('_method'));
 
+app.use(session({
+  name: 'session_id',
+  secret: 'shhhhhhhhh',
+  resave: false,
+  saveUninitialized: false,
+  cookie: { expires: 600000}
+}));
+
 app.use('/', routes);
 
 const port = process.env.PORT || 3000;
