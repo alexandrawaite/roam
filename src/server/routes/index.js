@@ -2,6 +2,9 @@ const router = require('express').Router();
 const users = require('../../models/users');
 const usersDb = require('../../models/db/users')
 const posts = require('../../models/posts');
+const middleware = require('../middleware');
+
+router.use(middleware.setDefaultResponseLocals);
 
 router.get('/', (req, res) => {
   res.render('posts/index');
@@ -19,17 +22,6 @@ router.post('/signup', (req, res) => {
   .catch( error => next(error) );
 })
 
-router.get('/profile/:id', (req, res) => {
-  const userId = req.params.id;
-  usersDb.findById(userId)
-  .then( user => {
-    return res.render('users/public_profile', {
-      user
-    })
-  })
-  .catch( error => next(error) );
-});
-
 router.get('/login', (req, res) => {
   res.render('users/login', {error: false});
 });
@@ -45,6 +37,19 @@ router.post('/login', (req, res) => {
       req.session.user = userId;
       res.redirect(`/profile/${userId}`);//will need to redirect to the users profile page
     }
+  })
+  .catch( error => next(error) );
+});
+
+router.use(middleware.isLoggedIn);
+
+router.get('/profile/:id', (req, res) => {
+  const userId = req.params.id;
+  usersDb.findById(userId)
+  .then( user => {
+    return res.render('users/public_profile', {
+      user
+    })
   })
   .catch( error => next(error) );
 });
