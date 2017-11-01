@@ -20,7 +20,7 @@ CREATE TABLE cities (
 CREATE TABLE posts (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users,
-  title TEXT NOT NULL,
+  title VARCHAR(200) NOT NULL,
   body TEXT NOT NULL
 );
 
