@@ -9,6 +9,12 @@
     </div>
     <section>
 
+    <% posts.forEach(function(post) {%>
+      <ul>
+        <li><a href="/show/<%= post.id %>"><%= post.title %></a></li>
+      </ul>
+    <% }) %>
+
     </section>
 </div>
   </body>
