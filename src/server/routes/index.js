@@ -35,7 +35,7 @@ router.post('/login', (req, res) => {
       res.render('users/login', { error: error})
     } else {
       req.session.user = userId;
-      res.redirect(`/profile/${userId}`);//will need to redirect to the users profile page
+      res.redirect(`/profile/public/${userId}`);//will need to redirect to the users profile page
     }
   })
   .catch( error => next(error) );
@@ -43,7 +43,7 @@ router.post('/login', (req, res) => {
 
 router.use(middleware.isLoggedIn);
 
-router.get('/profile/:id', (req, res) => {
+router.get('/profile/public/:id', (req, res) => {
   const userId = req.params.id;
   usersDb.findById(userId)
   .then( user => {
@@ -52,6 +52,25 @@ router.get('/profile/:id', (req, res) => {
     })
   })
   .catch( error => next(error) );
+});
+
+router.get('/profile/private/:id', (req, res) => {
+  const userId = req.params.id;
+  usersDb.findById(userId)
+  .then( user => {
+    return res.render('users/private_profile', {
+      user
+    })
+  })
+  .catch( error => next(error) );
+});
+
+router.get('/logout', (req, res) => {
+  res.clearCookie('session_id');
+  res.locals.isLoggedIn = false;
+  req.session.destroy(() => {
+    res.redirect('/');
+  });
 });
 
 module.exports = router;
