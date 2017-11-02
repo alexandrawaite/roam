@@ -1,3 +1,4 @@
+/* eslint-disable */
 const db = require('./db');
 
 const create = user => {
@@ -45,8 +46,22 @@ const findById = id => {
   });
 };
 
+const updateProfileById = (full_name, current_city, id) =>
+  db.oneOrNone(`
+    UPDATE
+      users
+    SET
+      full_name = $1,
+      current_city = $2
+    WHERE
+      id = $3
+    `,
+    [full_name, current_city, id]
+  )
+
 module.exports = {
   create,
   findByEmail,
-  findById
+  findById,
+  updateProfileById
 };

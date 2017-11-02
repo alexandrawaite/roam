@@ -1,0 +1,17 @@
+<%- include ../partials/header.ejs %>
+
+<h1>Update Profile</h1>
+<form class="update-profile-form" action="/user/update" method="POST">
+  <label>
+    <span>Full Name:</span>
+    <input type="text" placeholder="Enter Full Name" name="full_name" required/>
+  </label>
+  <br>
+  <label>
+    <span>Current City:</span>
+    <input type="text" placeholder="Enter Current City" name="current_city" required/>
+  </label>
+  <br />
+  <br />
+  <input type="submit" value="Submit">
+</form>

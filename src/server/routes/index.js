@@ -87,11 +87,26 @@ router.get('/show/:id', (req, res) => {
   .catch((error) => next(error));
 });
 
-router.get('/cities/:id', (req, res) => {
-  .then(() => {
-    return res.render('posts/city_page')
-  })
-  .catch((error) => next(error));
+router.get('/user/update', (req, res) => {
+  const { user } = req.session
+  res.status(200).render('users/update_form', {user})
 })
+
+router.post('/user/update', (req, res) => {
+  const { full_name, current_city } = req.body
+  const { user } = req.session
+  usersDb.updateProfileById(full_name, current_city, user)
+    .then(() => {
+      return res.redirect(`/profile/private/${user}`)
+    })
+    .catch(error => res.send(error.message))
+})
+
+// router.get('/cities/:id', (req, res) => {
+//   .then(() => {
+//     return res.render('posts/city_page')
+//   })
+//   .catch((error) => next(error));
+// })
 
 module.exports = router;
