@@ -1,11 +1,11 @@
 INSERT INTO
-  cities (name)
+  cities (name, image)
 VALUES
-  ('San Francisco'),
-  ('Oakland'),
-  ('Honolulu'),
-  ('Austin'),
-  ('Denver')
+  ('San Francisco', 'http://showitoffevents.com/Images/upcomingevent/upcomingeventsanfrancisco.jpg'),
+  ('Oakland', 'https://i.ytimg.com/vi/8kIQ9KPD2kQ/maxresdefault.jpg'),
+  ('London', 'http://www.universal-tourguide.com/wp-content/uploads/2016/10/visitlondonintwodays.jpg'),
+  ('Gibraltar', 'https://i0.wp.com/chronicle.gi/wp-content/uploads/2016/02/rock.png?fit=911%2C507'),
+  ('Denver', 'https://images.frmonline.com/sites/frc/pct/denver/moving-to-living-in-denver-784.jpg' )
 ;
 
 INSERT INTO

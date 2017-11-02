@@ -87,4 +87,11 @@ router.get('/show/:id', (req, res) => {
   .catch((error) => next(error));
 });
 
+router.get('/cities/:id', (req, res) => {
+  .then(() => {
+    return res.render('posts/city_page')
+  })
+  .catch((error) => next(error));
+})
+
 module.exports = router;
