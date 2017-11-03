@@ -29,9 +29,25 @@ const findById = id => {
     console.error({ message: 'Error occurred while executing posts.findById',
     arguments: arguments })
   });
-}
+};
+
+const findByCity = () => {
+  return db.oneOrNone(
+    `
+      SELECT * FROM
+        cities
+    `, []
+  )
+  .catch (error => {
+    console.error({message: 'Error occurred while executing posts.findByCity',
+    arguments: arguments })
+  });
+};
+
+
 
 module.exports = {
   findByUserId,
-  findById
+  findById,
+  findByCity
 };

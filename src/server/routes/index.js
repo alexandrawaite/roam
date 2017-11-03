@@ -3,12 +3,17 @@ const router = require('express').Router()
 const users = require('../../models/users')
 const usersDb = require('../../models/db/users')
 const posts = require('../../models/db/posts')
+const cities = require('../../models/db/cities')
 const middleware = require('../middleware')
 
 router.use(middleware.setDefaultResponseLocals);
 
 router.get('/', (req, res) => {
-  res.render('posts/index');
+  cities.findByCity()
+  .then((cities) => {
+    res.render('posts/index', {cities, city: false});
+  })
+  .catch((error) => next (error))
 });
 
 router.get('/signup', (req, res) => {
@@ -77,7 +82,7 @@ router.get('/logout', (req, res) => {
 
 router.get('/show/:id', (req, res) => {
   const postId = req.params.id;
-  posts.findById(postId) // need to write posts db function to find by post id
+  posts.findById(postId)
   .then((post) => {
     usersDb.findById(post.user_id)
     .then((user) => {
@@ -102,11 +107,13 @@ router.post('/user/update', (req, res) => {
     .catch(error => res.send(error.message))
 })
 
-// router.get('/cities/:id', (req, res) => {
-//   .then(() => {
-//     return res.render('posts/city_page')
-//   })
-//   .catch((error) => next(error));
-// })
+router.get('/cities/:id', (req, res) => {
+  const cityId = req.params.id
+  cities.findById(cityId)
+  .then((city) => {
+    return res.render('posts/city_page', {city})
+  })
+  .catch((error) => next(error));
+})
 
 module.exports = router;

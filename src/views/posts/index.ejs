@@ -1,10 +1,14 @@
-<%- include ../partials/header.ejs %> 
+<%- include ../partials/header.ejs %>
     </div>
     <div>
-      <img class="main-image" src="http://via.placeholder.com/400x150">
+      <img class="main-image" src="http://williamroam.com/images/homepage/slider/home_slider-roam2.jpg">
     </div>
     <div>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed eleifend metus. Nullam tincidunt neque aliquam augue dignissim sagittis. Sed non commodo eros. Aenean id ullamcorper nisl, eget tincidunt urna. Etiam ullamcorper magna est, sed auctor erat lobortis quis. Nullam viverra, eros eu fringilla mattis, felis sapien consectetur tortor, nec bibendum metus erat sed leo. Nullam tincidunt, mauris eget ornare lacinia, nisi nisi fermentum lacus, in rhoncus dui ligula nec nunc. Maecenas eleifend turpis at nisi semper pharetra. Etiam maximus at arcu eu imperdiet. Curabitur ut placerat massa, eu blandit arcu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Curabitur ultrices rhoncus sapien eget molestie. Nullam mattis tortor semper malesuada congue.</p>
+      <% cities.forEach(function(city) {%>
+        <ul>
+          <li><a href="/cities/<%= city.id %>"><%= city.name %></a></li>
+        </ul>
+      <% }) %>
     </div>
   </body>
 </html>

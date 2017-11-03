@@ -11,6 +11,10 @@ header {
   height: 400px;
 }
 
+.profile-image {
+  width: 150px;
+  height: 150px;
+}
 .flex-container {
   display: flex;
   justify-content: space-between;
