@@ -5,7 +5,9 @@
       <p>Name: <%= user.full_name %> </p>
       <p>Date Joined: <%= user.join_date %> </p>
       <p>Current City: <%= user.current_city %> </p>
-      <a class="button" href="/user/update">Edit Profile</a>
+      <form action="/user/update">
+        <input type="Submit" name="edit-button" value="Edit Profile">
+      </form>
     </div>
     <section>
 
