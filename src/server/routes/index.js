@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/signup', (req, res) => {
-  res.render('users/signup');
+  res.render('users/signup', {cities, city: false});
 });
 
 router.post('/signup', (req, res) => {
@@ -29,7 +29,7 @@ router.post('/signup', (req, res) => {
 })
 
 router.get('/login', (req, res) => {
-  res.render('users/login', {error: false});
+  res.render('users/login', {error: false, cities, city: false});
 });
 
 router.post('/login', (req, res) => {
