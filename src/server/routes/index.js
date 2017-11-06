@@ -8,28 +8,21 @@ const middleware = require('../middleware')
 
 router.use(middleware.setDefaultResponseLocals);
 
-router.get('/', (req, res) => {
-  cities.findByCity()
-  .then((cities) => {
-    res.render('posts/index', {cities, city: false});
-  })
-  .catch((error) => next (error))
-});
 
 router.get('/signup', (req, res) => {
-  res.render('users/signup', {cities, city: false});
+  res.render('users/signup', { city: false });
 });
 
 router.post('/signup', (req, res) => {
   users.create(req.body)
   .then((user) => {
-    if (user) return res.redirect('/');// will need to redirect to the users profile page
+    if (user) return res.redirect('/');
   })
   .catch((error) => next (error));
 })
 
 router.get('/login', (req, res) => {
-  res.render('users/login', {error: false, cities, city: false});
+  res.render('users/login', {error: false, city: false});
 });
 
 router.post('/login', (req, res) => {
@@ -41,7 +34,7 @@ router.post('/login', (req, res) => {
       res.render('users/login', { error: error })
     } else {
       req.session.user = userId;
-      res.redirect(`/profile/public/${userId}`);// will need to redirect to the users profile page
+      res.redirect(`/profile/public/${userId}`);
     }
   })
   .catch((error) => next(error) );
@@ -49,24 +42,35 @@ router.post('/login', (req, res) => {
 
 router.use(middleware.isLoggedIn);
 
+router.get('/', (req, res) => {
+  const { user } = req.session
+  cities.findByCity()
+  .then((cities) => {
+    res.render('posts/index', { user, cities, city: false });
+  })
+  .catch((error) => next (error))
+});
+
 router.get('/profile/public/:id', (req, res) => {
+  const { user }  = req.session;
   const userId = req.params.id;
   usersDb.findById(userId)
   .then((user) => {
     posts.findByUserId(user.id)
     .then((posts) => {
-      return res.render('users/public_profile', { user, posts })
+      return res.render('users/public_profile', { user, posts, city: false })
     });
   })
   .catch((error) => next(error));
 });
 
-router.get('/profile/private/:id', (req, res) => {
-  const userId = req.params.id;
-  usersDb.findById(userId)
-  .then((user) => {
+router.get('/profile/private', (req, res) => {
+  const { user }  = req.session;
+  usersDb.findById(user)
+  .then((foundUser) => {
     return res.render('users/private_profile', {
-      user
+      user: foundUser,
+      city: false
     })
   })
   .catch((error) => next(error));
@@ -86,15 +90,15 @@ router.get('/show/:id', (req, res) => {
   .then((post) => {
     usersDb.findById(post.user_id)
     .then((user) => {
-      return res.render('posts/post', { user, post })
+      return res.render('posts/post', { user, post, city: false })
     })
   })
   .catch((error) => next(error));
 });
 
-router.get('/user/update', (req, res) => {
-  const { user } = req.session
-  res.status(200).render('users/update_form', {user})
+router.get('/user/update/:id', (req, res) => {
+  const user = req.params.id
+  res.status(200).render('users/update_form', {user, city: false})
 })
 
 router.post('/user/update', (req, res) => {
@@ -108,10 +112,11 @@ router.post('/user/update', (req, res) => {
 })
 
 router.get('/cities/:id', (req, res) => {
+  const { user } = req.session;
   const cityId = req.params.id
   cities.findById(cityId)
   .then((city) => {
-    return res.render('posts/city_page', {city})
+    return res.render('posts/city_page', {user, city})
   })
   .catch((error) => next(error));
 })

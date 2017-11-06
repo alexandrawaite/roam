@@ -15,8 +15,8 @@
             <a class="sign-up" href="/signup">Sign Up</a>
             <a class="log-in" href="/login">Log In</a>
           <%} else { %>
-            <a class="sign-up" href="/profile/private/<%= user.id %>">Profile</a>
-            <a class="log-in" href="/logout">Log Out</a>
+            <a class="private-profile" href="/profile/private">Profile</a>
+            <a class="log-out" href="/logout">Log Out</a>
           <%}%>
         </span>
       </header>
