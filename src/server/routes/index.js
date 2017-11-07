@@ -121,4 +121,8 @@ router.get('/cities/:id', (req, res) => {
   .catch((error) => next(error));
 })
 
+router.get('/newpost', (req, res) => {
+  return res.render('posts/new_post', { city: false })
+})
+
 module.exports = router;
