@@ -22,7 +22,8 @@ CREATE TABLE posts (
   id SERIAL PRIMARY KEY,
   user_id INTEGER REFERENCES users,
   title VARCHAR(200) NOT NULL,
-  body TEXT NOT NULL
+  body TEXT NOT NULL,
+  post_date timestamp DEFAULT current_date
 );
 
 CREATE TABLE cities_posts (

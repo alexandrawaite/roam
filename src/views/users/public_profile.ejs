@@ -10,9 +10,12 @@
     <section>
 
     <% posts.forEach(function(post) {%>
-      <ul>
-        <li><a href="/show/<%= post.id %>"><%= post.title %></a></li>
-      </ul>
+      <span>
+      <p><a href="/show/<%= post.id %>"><%= post.title %></a></p>
+        <form class="delete-post-button" action="" method="DELETE">
+          <input type="button" name="delete_post_button" value="Delete">
+        </form>
+      </span>
     <% }) %>
 
     </section>
