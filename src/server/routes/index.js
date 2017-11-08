@@ -1,4 +1,3 @@
-/* eslint-disable */
 const router = require('express').Router()
 const users = require('../../models/users')
 const usersDb = require('../../models/db/users')
@@ -7,7 +6,6 @@ const cities = require('../../models/db/cities')
 const middleware = require('../middleware')
 
 router.use(middleware.setDefaultResponseLocals);
-
 
 router.get('/signup', (req, res) => {
   res.render('users/signup', { city: false });
@@ -18,11 +16,11 @@ router.post('/signup', (req, res) => {
   .then((user) => {
     if (user) return res.redirect('/');
   })
-  .catch((error) => next (error));
+  .catch((error) => next(error));
 })
 
 router.get('/login', (req, res) => {
-  res.render('users/login', {error: false, city: false});
+  res.render('users/login', { error: false, city: false });
 });
 
 router.post('/login', (req, res) => {
@@ -43,16 +41,16 @@ router.post('/login', (req, res) => {
 router.use(middleware.isLoggedIn);
 
 router.get('/', (req, res) => {
-  const { user } = req.session
+  const { user } = req.session;
   cities.findByCity()
   .then((cities) => {
     res.render('posts/index', { user, cities, city: false });
   })
-  .catch((error) => next (error))
+  .catch((error) => next(error))
 });
 
 router.get('/profile/public/:id', (req, res) => {
-  const { user }  = req.session;
+  const { user } = req.session;
   const userId = req.params.id;
   usersDb.findById(userId)
   .then((user) => {
@@ -65,7 +63,7 @@ router.get('/profile/public/:id', (req, res) => {
 });
 
 router.get('/profile/private', (req, res) => {
-  const { user }  = req.session;
+  const { user } = req.session;
   usersDb.findById(user)
   .then((foundUser) => {
     return res.render('users/private_profile', {
@@ -89,25 +87,21 @@ router.get('/show/:id', (req, res) => {
   posts.findById(postId)
   .then((post) => {
     usersDb.findById(post.user_id)
-    .then((user) => {
-      return res.render('posts/post', { user, post, city: false })
-    })
+    .then((user) => res.render('posts/post', { user, post, city: false }))
   })
   .catch((error) => next(error));
 });
 
 router.get('/user/update/:id', (req, res) => {
   const user = req.params.id
-  res.status(200).render('users/update_form', {user, city: false})
+  res.status(200).render('users/update_form', { user, city: false })
 })
 
 router.post('/user/update', (req, res) => {
   const { full_name, current_city } = req.body
   const { user } = req.session
   usersDb.updateProfileById(full_name, current_city, user)
-    .then(() => {
-      return res.redirect(`/profile/private/${user}`)
-    })
+    .then(() => res.redirect(`/profile/private/${user}`))
     .catch(error => res.send(error.message))
 })
 
@@ -115,9 +109,7 @@ router.get('/cities/:id', (req, res) => {
   const { user } = req.session;
   const cityId = req.params.id
   cities.findById(cityId)
-  .then((city) => {
-    return res.render('posts/city_page', {user, city})
-  })
+  .then((city) => res.render('posts/city_page', { user, city }))
   .catch((error) => next(error));
 })
 

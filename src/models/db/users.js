@@ -1,4 +1,3 @@
-/* eslint-disable */
 const db = require('./db');
 
 const create = user => {

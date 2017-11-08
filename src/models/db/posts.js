@@ -1,4 +1,3 @@
-/* eslint-disable */
 const db = require('./db');
 
 const findByUserId = id => {
@@ -38,13 +37,11 @@ const findByCity = () => {
         cities
     `, []
   )
-  .catch (error => {
-    console.error({message: 'Error occurred while executing posts.findByCity',
+  .catch(error => {
+    console.error({ message: 'Error occurred while executing posts.findByCity',
     arguments: arguments })
   });
 };
-
-
 
 module.exports = {
   findByUserId,

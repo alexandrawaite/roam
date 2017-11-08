@@ -1,4 +1,3 @@
-/* eslint-disable */
 const db = require('./db');
 
 const findByCity = () => {
@@ -8,8 +7,8 @@ const findByCity = () => {
         cities
     `, []
   )
-  .catch (error => {
-    console.error({message: 'Error occurred while executing posts.findByCity',
+  .catch(error => {
+    console.error({ message: 'Error occurred while executing posts.findByCity',
     arguments: arguments })
   });
 };
