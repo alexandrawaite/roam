@@ -101,7 +101,7 @@ router.post("/user/update", (req, res) => {
   const { full_name, current_city } = req.body;
   const { user } = req.session;
   usersDb.updateProfileById(full_name, current_city, user)
-    .then(() => res.redirect(`/profile/private/${user}`))
+    .then(() => res.redirect('/profile/private/'))
     .catch(error => res.send(error.message));
 });
 
