@@ -57,9 +57,11 @@ const create = post => {
     INSERT INTO
       posts (user_id, title, body)
     VALUES
-      ($1::text, $2::text, $3::text)
+      ($1::int, $2::text, $3::text)
+    RETURNING
+      posts.id
   `,
-  [post.user_id, post.title, post.body])
+  [post.user_id, post.title, post.body, post.id])
   .catch( error => {
     console.error({ message: 'Error occurred while executing posts.create',
     arguments: arguments });

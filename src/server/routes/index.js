@@ -85,8 +85,7 @@ router.get("/show/:id", (req, res) => {
   const postId = req.params.id;
   posts.findById(postId)
     .then(post => {
-      usersDb
-        .findById(post.user_id)
+      usersDb.findById(post.user_id)
         .then(user => res.render("posts/post", { user, post, city: false }));
     })
     .catch(error => next(error));
@@ -116,8 +115,24 @@ router.get("/cities/:id", (req, res) => {
     .catch(error => next(error));
 });
 
-router.get("/newpost", (req, res) => {
-  return res.render("posts/new_post", { city: false });
+router.get("/newpost/:id", (req, res) => {
+  const { user } = req.session;
+  const cityId = req.params.id
+  cities.findById(cityId)
+  .then((city) => {
+    return res.render("posts/new_post", { user, city, cityId });
+  })
+  .catch(error => next(error));
 });
+
+router.post('/newpost', (req, res) => {
+  const { title, body } = req.body;
+  const { user } = req.session;
+  posts.create(req.body)
+  .then((postId) => {
+    res.redirect(`/show/${postId[0].id}`)
+  })
+  .catch(error => next(error));
+})
 
 module.exports = router;
