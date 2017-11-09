@@ -1,8 +1,7 @@
 const db = require('./db');
 
 const findByUserId = id => {
-  return db
-    .any(
+  return db.any(
       `
       SELECT * FROM
         posts
@@ -19,8 +18,7 @@ const findByUserId = id => {
 };
 
 const findById = id => {
-  return db
-    .oneOrNone(
+  return db.oneOrNone(
       `
       SELECT * FROM
         posts
@@ -36,14 +34,15 @@ const findById = id => {
     });
 };
 
-const findByCity = () => {
-  return db
-    .oneOrNone(
+const findByCity = id => {
+  return db.any(
       `
       SELECT * FROM
-        cities
+        cities_posts
+      JOIN posts ON posts.id = post_id
+      WHERE city_id = $1
     `,
-      []
+      [id]
     )
     .catch(error => {
       console.error({

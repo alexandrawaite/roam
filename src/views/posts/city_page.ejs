@@ -7,7 +7,9 @@
       </form>
     </div>
     <div>
-
+      <% posts.forEach(function(post) { %>
+        <p><a href="/show/<% post.id %>"><%= post.title %></a></p>
+      <% }) %>
     </div>
   </body>
 </html>
