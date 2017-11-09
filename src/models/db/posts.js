@@ -52,8 +52,24 @@ const findByCity = id => {
     });
 };
 
+const create = post => {
+  return db.query(`
+    INSERT INTO
+      posts (user_id, title, body)
+    VALUES
+      ($1::text, $2::text, $3::text)
+  `,
+  [post.user_id, post.title, post.body])
+  .catch( error => {
+    console.error({ message: 'Error occurred while executing posts.create',
+    arguments: arguments });
+    throw error;
+  });
+};
+
 module.exports = {
   findByUserId,
   findById,
-  findByCity
+  findByCity,
+  create
 };

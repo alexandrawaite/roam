@@ -2,13 +2,13 @@
     </div>
     <div>
       <img class="main-image" src="<%= city.image %>">
-      <form class="new-post-button" action="/newpost" method="GET">
-        <input type="button" name="new_post_button" value="New Post">
+      <form class="new-post-button" action="/newpost">
+        <input type="Submit" name="new_post_button" value="New Post">
       </form>
     </div>
     <div>
       <% posts.forEach(function(post) { %>
-        <p><a href="/show/<% post.id %>"><%= post.title %></a></p>
+        <p><a href="/show/<%= post.id %>"><%= post.title %></a></p>
       <% }) %>
     </div>
   </body>
