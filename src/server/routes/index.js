@@ -125,12 +125,19 @@ router.get("/newpost/:id", (req, res) => {
   .catch(error => next(error));
 });
 
-router.post('/newpost', (req, res) => {
+router.post('/newpost/:id', (req, res) => {
   const { title, body } = req.body;
   const { user } = req.session;
+  const cityId = req.params.id
+  console.log("What is the cityId", cityId);
   posts.create(req.body)
   .then((postId) => {
+    console.log("What is postId?", postId);
+    posts.updateCitiesPost(cityId, postId[0].id)
+  .then((postId) => {
+    console.log("What is postId2222222?", postId);
     res.redirect(`/show/${postId[0].id}`)
+    })
   })
   .catch(error => next(error));
 })

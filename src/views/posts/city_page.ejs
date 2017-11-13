@@ -8,7 +8,9 @@
     </div>
     <div>
       <% posts.forEach(function(post) { %>
-        <p><a href="/show/<%= post.id %>"><%= post.title %></a></p>
+        <ul>
+          <li><a href="/show/<%= post.id %>"><%= post.title %></a></li>
+        </ul>
       <% }) %>
     </div>
   </body>

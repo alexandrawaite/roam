@@ -69,6 +69,22 @@ const create = post => {
   });
 };
 
+const updateCitiesPost = (city, post) => {
+  return db.query(`
+    INSERT INTO
+      cities_posts (city_id, post_id)
+    VALUES
+      ($1::int, $2::int)
+    RETURNING
+      post_id
+  `, [city.city_id, post.post_id])
+  .catch( error => {
+    console.error({ message: 'Error occurred while executing posts.updateCitiesPost',
+    arguments: arguments });
+    throw error;
+  })
+}
+
 module.exports = {
   findByUserId,
   findById,
