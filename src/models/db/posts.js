@@ -77,7 +77,7 @@ const updateCitiesPost = (city, post) => {
       ($1::int, $2::int)
     RETURNING
       post_id
-  `, [city.city_id, post.post_id])
+  `, [city, post])
   .catch( error => {
     console.error({ message: 'Error occurred while executing posts.updateCitiesPost',
     arguments: arguments });
@@ -89,5 +89,6 @@ module.exports = {
   findByUserId,
   findById,
   findByCity,
-  create
+  create,
+  updateCitiesPost
 };
