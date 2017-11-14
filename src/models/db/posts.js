@@ -41,6 +41,8 @@ const findByCity = id => {
         cities_posts
       JOIN posts ON posts.id = post_id
       WHERE city_id = $1
+      ORDER BY
+        post_id DESC
     `,
       [id]
     )
