@@ -1,6 +1,6 @@
 <%- include ../partials/header.ejs %>
 
-<form class="update-post-form" action="/post/update" method="POST">
+<form class="update-post-form" action="/post/update/<%= post.id%>" method="POST">
   <input type='hidden' name='user_id' value='<%= user %>'>
   <input type='hidden' name='city_id' value='<%= city.id %>'>
     <h2>Title:</h2>

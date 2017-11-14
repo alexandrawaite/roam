@@ -148,12 +148,14 @@ router.get("/post/update/:id", (req, res) => {
   })
 });
 
-router.post("/post/update", (req, res) => {
+router.post("/post/update/:id", (req, res) => {
   const { title, body } = req.body;
   const { user } = req.session;
   const postId = req.params.id;
   posts.updatePostById(title, body, postId)
-    .then((postId) => res.redirect(`/show/${postId[0].post_id}`))
+    .then(() => {
+      res.redirect(`/show/${postId}`)
+    })
     .catch(error => res.send(error.message));
 });
 

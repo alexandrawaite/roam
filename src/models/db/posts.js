@@ -96,6 +96,8 @@ const updatePostById = (title, body, id) =>
       body = $2
     WHERE
       id = $3
+    RETURNING
+      id
     `,
     [title, body, id]
   )
