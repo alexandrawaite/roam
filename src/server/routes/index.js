@@ -137,6 +137,24 @@ router.post('/newpost/:id', (req, res) => {
     })
   })
   .catch(error => next(error));
-})
+});
+
+router.get("/post/update/:id", (req, res) => {
+  const postId = req.params.id;
+  const { user } = req.session;
+  posts.findById(postId)
+  .then((post) => {
+    res.status(200).render("posts/update_post", { user, post, city: false });
+  })
+});
+
+router.post("/post/update", (req, res) => {
+  const { title, body } = req.body;
+  const { user } = req.session;
+  const postId = req.params.id;
+  posts.updatePostById(title, body, postId)
+    .then((postId) => res.redirect(`/show/${postId[0].post_id}`))
+    .catch(error => res.send(error.message));
+});
 
 module.exports = router;

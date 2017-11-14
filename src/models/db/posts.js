@@ -87,10 +87,24 @@ const updateCitiesPost = (city, post) => {
   })
 }
 
+const updatePostById = (title, body, id) =>
+  db.oneOrNone(`
+    UPDATE
+      posts
+    SET
+      title = $1,
+      body = $2
+    WHERE
+      id = $3
+    `,
+    [title, body, id]
+  )
+
 module.exports = {
   findByUserId,
   findById,
   findByCity,
   create,
-  updateCitiesPost
+  updateCitiesPost,
+  updatePostById
 };

@@ -12,8 +12,8 @@
     <% posts.forEach(function(post) {%>
       <span>
       <p><a href="/show/<%= post.id %>"><%= post.title %></a></p>
-        <form class="delete-post-button" action="" method="DELETE">
-          <input type="button" name="delete_post_button" value="Delete">
+        <form action="/post/update/<%= post.id %>">
+          <input type="Submit" name="edit-button" value="Edit">
         </form>
       </span>
     <% }) %>
