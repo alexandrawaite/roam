@@ -165,12 +165,11 @@ router.post("/post/update/:id", (req, res) => {
 
 router.delete("/post/delete/:id", (req, res) => {
   const postId = req.params.id;
-  const { user } = req.session
-  posts.destroy(postId)
-  .then((postId) => {
-    posts.destroyCitiesPosts(postId)
-      .then((postId) => {
-      res.redirect('/profile/private/', { user })
+  posts.destroyCitiesPosts(postId)
+  .then(() => {
+    posts.destroy(postId)
+      .then(() => {
+      res.redirect('/profile/private/')
     })
   })
 })

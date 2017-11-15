@@ -109,7 +109,7 @@ const destroy = id => {
     WHERE
       posts.id = $1
   `,
-  id)
+  [id])
   .catch( error => {
     console.error({ message: 'Error occurred while executing posts.destroy',
     arguments: arguments });
