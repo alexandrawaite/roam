@@ -61,7 +61,7 @@ router.get("/profile/public/:id", (req, res) => {
     .catch(error => next(error));
 });
 
-router.get("/profile/private", (req, res) => {
+router.get("/profile/private", (req, res, next) => {
   const { user } = req.session;
   usersDb.findById(user)
     .then(foundUser => {

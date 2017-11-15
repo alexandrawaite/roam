@@ -12,15 +12,13 @@
     <section>
 
     <% posts.forEach(function(post) {%>
-      <span>
-      <p><a href="/show/<%= post.id %>"><%= post.title %></a></p>
+      <p><a class="post-title" href="/show/<%= post.id %>"><%= post.title %></a></p>
         <form action="/post/update/<%= post.id %>">
           <input type="Submit" name="edit-button" value="Edit">
         </form>
         <form action="/post/delete/<%= post.id %>?_method=DELETE" method="POST">
-          <input type="Submit" name="delete-button" value="Delete">
+          <button type="Submit" class="delete-button" name="delete-button" value="Delete"></button>
         </form>
-      </span>
     <% }) %>
 
     </section>
