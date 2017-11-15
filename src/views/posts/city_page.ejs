@@ -2,9 +2,11 @@
     </div>
     <div>
       <img class="main-image" src="<%= city.image %>">
+      <% if (isLoggedIn) {%>
       <form class="new-post-button" action="/newpost/<%= city.id %>">
         <input type="Submit" name="new_post_button" value="New Post">
       </form>
+      <%}%>
     </div>
     <div>
       <% posts.forEach(function(post) { %>
