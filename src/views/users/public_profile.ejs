@@ -12,9 +12,6 @@
     <% posts.forEach(function(post) {%>
       <span>
       <p><a href="/show/<%= post.id %>"><%= post.title %></a></p>
-        <form action="/post/update/<%= post.id %>">
-          <input type="Submit" name="edit-button" value="Edit">
-        </form>
       </span>
     <% }) %>
 

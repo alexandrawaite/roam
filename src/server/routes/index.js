@@ -65,10 +65,14 @@ router.get("/profile/private", (req, res) => {
   const { user } = req.session;
   usersDb.findById(user)
     .then(foundUser => {
-      return res.render("users/private_profile", {
-        user: foundUser,
-        city: false
-      });
+      posts.findByUserId(foundUser.id)
+        .then( posts => {
+          return res.render("users/private_profile", {
+            user: foundUser,
+            city: false,
+            posts
+          });
+        })
     })
     .catch(error => next(error));
 });
@@ -158,5 +162,17 @@ router.post("/post/update/:id", (req, res) => {
     })
     .catch(error => res.send(error.message));
 });
+
+router.delete("/post/delete/:id", (req, res) => {
+  const postId = req.params.id;
+  const { user } = req.session
+  posts.destroy(postId)
+  .then((postId) => {
+    posts.destroyCitiesPosts(postId)
+      .then((postId) => {
+      res.redirect('/profile/private/', { user })
+    })
+  })
+})
 
 module.exports = router;

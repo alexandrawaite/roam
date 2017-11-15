@@ -102,11 +102,43 @@ const updatePostById = (title, body, id) =>
     [title, body, id]
   )
 
+const destroy = id => {
+  return db.none(`
+    DELETE FROM
+      posts
+    WHERE
+      posts.id = $1
+  `,
+  id)
+  .catch( error => {
+    console.error({ message: 'Error occurred while executing posts.destroy',
+    arguments: arguments });
+    throw error;
+  })
+};
+
+const destroyCitiesPosts = id => {
+  return db.none(`
+    DELETE FROM
+      cities_posts
+    WHERE
+      cities_posts.post_id = $1::int
+  `,
+  id)
+  .catch( error => {
+    console.error({ message: 'Error occurred while executing posts.destroyCitiesPosts',
+    arguments: arguments });
+    throw error;
+  })
+};
+
 module.exports = {
   findByUserId,
   findById,
   findByCity,
   create,
   updateCitiesPost,
-  updatePostById
+  updatePostById,
+  destroy,
+  destroyCitiesPosts
 };
