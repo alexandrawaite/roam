@@ -17,7 +17,7 @@
           <input type="Submit" name="edit-button" value="Edit">
         </form>
         <form action="/post/delete/<%= post.id %>?_method=DELETE" method="POST">
-          <button type="Submit" class="delete-button" name="delete-button" value="Delete"></button>
+          <button type="Submit" class="delete-button" name="delete-button" value="Delete">Delete</button>
         </form>
     <% }) %>
 
@@ -25,3 +25,5 @@
 </div>
   </body>
 </html>
+
+<%- include ../partials/footer.ejs %>
