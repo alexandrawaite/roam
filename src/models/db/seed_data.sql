@@ -1,11 +1,11 @@
 INSERT INTO
-  cities (name, image)
+  cities (name, description, image)
 VALUES
-  ('San Francisco', 'http://showitoffevents.com/Images/upcomingevent/upcomingeventsanfrancisco.jpg'),
-  ('Oakland', 'https://i.ytimg.com/vi/8kIQ9KPD2kQ/maxresdefault.jpg'),
-  ('London', 'http://www.universal-tourguide.com/wp-content/uploads/2016/10/visitlondonintwodays.jpg'),
-  ('Gibraltar', 'https://i0.wp.com/chronicle.gi/wp-content/uploads/2016/02/rock.png?fit=911%2C507'),
-  ('Denver', 'https://images.frmonline.com/sites/frc/pct/denver/moving-to-living-in-denver-784.jpg' )
+  ('San Francisco', 'Grab your kombucha and a handful of sage, enter the land of nature and skyscrapers. So long, comfy couch; hello, Golden Gate City.', 'https://images.unsplash.com/photo-1499881473615-cce30babfcad?auto=format&fit=crop&w=1500&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D'),
+  ('Oakland', 'Catch the BART and go under the sea, with a hint of sunlight, it will be Oakland you''ll see. From Hip-Hop to Hipsters, peel back the may layers of the 510!', 'https://i.ytimg.com/vi/8kIQ9KPD2kQ/maxresdefault.jpg'),
+  ('London', 'From Roman ruins to castles and cathedrals, you''ll never run out of unique things to do in London! Become one of the estimated 15 million visitors that this royal city receives each year.', 'http://www.universal-tourguide.com/wp-content/uploads/2016/10/visitlondonintwodays.jpg'),
+  ('Gibraltar', 'Do you smell the fish-n-chips that the Rock is cooking? And by "Rock" I mean the sea-side wonder called Gibraltar. Nestled in the jaws of Spain and Africa, Gibraltar is a British Overseas Territory fave.', 'https://i0.wp.com/chronicle.gi/wp-content/uploads/2016/02/rock.png?fit=911%2C507'),
+  ('Denver', 'Bask in the "high" of the Mile High City, with its vast park system encompassing more than 250 parks in the city and 14,000 acres of mountain parks and open spaces. Venture this outdoor city''s walkable downtown with the Rockies as a backdrop.', 'https://images.frmonline.com/sites/frc/pct/denver/moving-to-living-in-denver-784.jpg' )
 ;
 
 INSERT INTO

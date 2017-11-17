@@ -1,23 +1,23 @@
 <%- include ../partials/header.ejs %>
-    <h1>Signup</h1>
-    <form class="signup-form" action="/signup" method="POST">
-      <label>
-        <span>Full Name:</span>
-        <input type="full_name" placeholder="First and Last Name" name="full_name" required/>
-      </label>
-      <br>
-      <label>
-        <span>Email:</span>
-        <input type="email" placeholder="Enter email" name="email" required/>
-      </label>
-      <br>
-      <label>
-        <span>Password:</span>
-        <input type="password" placeholder="Enter password" name="password" required/>
-      </label>
-      <br><br>
+
+  <form class="" action="/signup" method="POST">
+      <div>
+        <label for="name">Full Name: </label>
+        <input id="name" type="text" placeholder="First and Last Name" name="full_name" required/>
+      </div>
+
+      <div>
+        <label for="email">Email: </label>
+        <input id="email" type="email" placeholder="Enter email" name="email" required/>
+      </div>
+
+      <div>
+        <label for="password">Password: </label>
+        <input id="password" type="password" placeholder="Enter password" name="password" required/>
+      </div>
+
       <input type="submit" value="Signup">
       <span>Already a user? <a href="/login">Log in!</a></span>
-    </form>
-  </body>
-</html>
+  </form>
+
+<%- include ../partials/footer.ejs %>

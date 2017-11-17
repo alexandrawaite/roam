@@ -15,6 +15,7 @@ CREATE TABLE users (
 CREATE TABLE cities (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) UNIQUE NOT NULL,
+  description TEXT NOT NULL,
   image VARCHAR(255) NOT NULL
 );
 
