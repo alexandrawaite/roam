@@ -1,15 +1,29 @@
 <%- include ../partials/header.ejs %>
-
-<form class="new-post" action="/newpost/<%= city.id %>" method="POST">
+<br>
+<br>
+<br>
+<div class="flex-container">
+  <h1>New Post</h1>
+</div>
+<div class="flex-container">
+<form class="pure-form pure-form-stacked" action="/newpost/<%= city.id %>" method="POST">
+<fieldset>
   <input type='hidden' name='user_id' value='<%= user %>'>
   <input type='hidden' name='city_id' value='<%= city.id %>'>
-    <h2>Title:</h2>
-    <textarea name="title" rows="1" cols="80"></textarea>
-  <br>
-    <h2>Body:</h2>
-    <textarea name="body" rows="8" cols="80"></textarea>
-  <br><br>
-  <input type="submit" value="Submit Post">
+    <div class="pure-control-group">
+      <label for="title">Title:</label>
+      <textarea name="title" rows="1" cols="80"></textarea>
+    </div>
+
+    <div class="pure-control-group">
+      <label for="body">Body:</label>
+      <textarea name="body" rows="8" cols="80"></textarea>
+    </div>
+
+    <div class="pure-controls">
+      <button type="submit" class="pure-button pure-button-primary">Submit Post</button>
+    </div>
+    </fieldset>
 </form>
 
 <%- include ../partials/footer.ejs %>

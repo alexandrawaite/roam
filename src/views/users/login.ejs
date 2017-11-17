@@ -1,21 +1,33 @@
 <%- include ../partials/header.ejs %>
+  <br>
+  <br>
+  <br>
+  <div class="flex-container">
     <h1>Login</h1>
-    <form class="login-form" action="/login" method="POST">
-      <label>
-        <span>Email:</span>
-        <input type="email" placeholder="Enter email" name="email" required/>
-      </label>
-      <br>
-      <label>
-        <span>Password:</span>
-        <input type="password" placeholder="Enter password" name="password" required/>
-      </label>
-      <br><br>
-      <input type="submit" value="Login">
-      <span>Not a user? <a href="/signup">Signup!</a></span>
+  </div>
+  <div class="flex-container">
+    <form class="pure-form pure-form-stacked" action="/login" method="POST">
+      <fieldset>
+        <div class="pure-control-group">
+        <label for="email">Email:</label>
+          <input id="email" type="email" placeholder="Enter email" name="email" required/>
+        </div>
+        
+        <div class="pure-control-group">
+          <label for="password">Password:</label>
+          <input id="password" type="password" placeholder="Enter password" name="password" required/>
+        </div>
+
+        <div class="pure-controls">
+          <button type="submit" class="pure-button pure-button-primary">Login</button>
+          <span>Not a user? <a href="/signup">Signup!</a></span>
+        </div>
+      </fieldset>
     </form>
 
     <% if (error === 'Invalid username or password') {%>
-      <div style="color: red;"><%= error %></div>
-    <% }%>
-<%- include ../partials/footer.ejs %>
+      <div style="color: red;">
+        <%= error %>
+      </div>
+      <% }%>
+        <%- include ../partials/footer.ejs %>

@@ -1,19 +1,28 @@
 <%- include ../partials/header.ejs %>
-
+<br>
+<br>
+<br>
+<div class="flex-container">
 <h1>Update Profile</h1>
-<form class="update-profile-form" action="/user/update" method="POST">
-  <label>
-    <span>Full Name:</span>
-    <input type="text" placeholder="Enter Full Name" name="full_name" required/>
-  </label>
-  <br>
-  <label>
-    <span>Current City:</span>
-    <input type="text" placeholder="Enter Current City" name="current_city" required/>
-  </label>
-  <br />
-  <br />
-  <input type="submit" value="Submit">
+</div>
+
+<div class="flex-container">
+<form class="pure-form pure-form-stacked" action="/user/update" method="POST">
+  <fieldset>
+    <div class="pure-control-group">
+  <label>Full Name:</label>
+    <input id="name" type="text" placeholder="Enter Full Name" name="full_name" required/>
+  </div>
+
+  <div class="pure-control-group">
+  <label>Current City:</label>
+    <input id="city" type="text" placeholder="Enter Current City" name="current_city" required/>
+  </div>
+
+<div class="pure-controls">
+  <button type="submit" class="pure-button pure-button-primary">Submit</button>
+</div>
+</fieldset>
 </form>
 
 <%- include ../partials/footer.ejs %>

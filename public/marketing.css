@@ -283,3 +283,9 @@ a.pure-button-primary {
         font-size: 300%;
     }
 }
+
+/*Flex Box*/
+.flex-container {
+  display: flex;
+  justify-content: center;
+}

@@ -1,15 +1,30 @@
 <%- include ../partials/header.ejs %>
-
+<br>
+<br>
+<br>
+<div class="flex-container">
+  <h1>Edit Post</h1>
+</div>
+<div class="flex-container">
 <form class="update-post-form" action="/post/update/<%= post.id%>" method="POST">
+<fieldset>
   <input type='hidden' name='user_id' value='<%= user %>'>
   <input type='hidden' name='city_id' value='<%= city.id %>'>
-    <h2>Title:</h2>
+
+  <div class="pure-control-group">
+  <label for="title">Title:</label>
     <input name="title" rows="1" cols="80" value="<%= post.title %>"></input>
-  <br>
-    <h2>Body:</h2>
+  </div>
+
+  <div class="pure-control-group">
+  <label for="body">Body:</label>
     <input name="body" rows="8" cols="80" value="<%= post.body %>"></input>
-  <br><br>
-  <input type="submit" value="Submit Post">
+  </div>
+
+  <div class="pure-controls">
+  <button type="submit" class="pure-button pure-button-primary">Submit</button>
+</div>
+</fieldset>
 </form>
 
 <%- include ../partials/footer.ejs %>
