@@ -6,19 +6,19 @@
   <h1>Edit Post</h1>
 </div>
 <div class="flex-container">
-<form class="update-post-form" action="/post/update/<%= post.id%>" method="POST">
+<form class="pure-form pure-form-stacked" action="/post/update/<%= post.id%>" method="POST">
 <fieldset>
   <input type='hidden' name='user_id' value='<%= user %>'>
   <input type='hidden' name='city_id' value='<%= city.id %>'>
 
   <div class="pure-control-group">
   <label for="title">Title:</label>
-    <input name="title" rows="1" cols="80" value="<%= post.title %>"></input>
+    <textarea name="title" rows="1" cols="80"><%= post.title %></textarea>
   </div>
 
   <div class="pure-control-group">
   <label for="body">Body:</label>
-    <input name="body" rows="8" cols="80" value="<%= post.body %>"></input>
+    <textarea name="body" rows="8" cols="80"><%= post.body %></textarea>
   </div>
 
   <div class="pure-controls">
