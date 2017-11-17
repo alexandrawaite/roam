@@ -1,20 +1,19 @@
 <%- include ../partials/header.ejs %>
 
   <div class="flex-container">
-    <div>
+    <div class="profile-section">
       <img class="profile-image" src="https://cdn.dribbble.com/users/220527/screenshots/1376137/avatars.png">
       <p name:"name">Name: <%= user.full_name %> </p>
       <p name:"dateJoined">Date Joined: <%= user.join_date %> </p>
       <p name:"currentCity">Current City: <%= user.current_city %> </p>
     </div>
-    <section>
 
+    <section class="post-section">
     <% posts.forEach(function(post) {%>
       <span>
       <p><a href="/show/<%= post.id %>"><%= post.title %></a></p>
       </span>
     <% }) %>
-
     </section>
-</div>
+  </div>
 <%- include ../partials/footer.ejs %>

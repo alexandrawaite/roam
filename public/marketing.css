@@ -289,3 +289,19 @@ a.pure-button-primary {
   display: flex;
   justify-content: center;
 }
+
+.profile-section {
+  width: 80%;
+  height: 50%;
+  position: absolute;
+  top: 100px; left: 0; bottom: 0; right: 0;
+  text-align: center;
+}
+
+.post-section {
+  width: 80%;
+  height: 50%;
+  position: absolute;
+  top: 100px; left: 0; bottom: 0; right: 0;
+  text-align: right;
+}
