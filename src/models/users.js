@@ -27,7 +27,7 @@ const verify = (email, password) => {
       return bcrypt.compare(password, validUser.encrypted_password)
       .then((result) => {
         if (result) {
-          return validUser.id;//for session to login the user
+          return validUser.id; //for session to login the user
         } else if (!validUser) {
           throw new Error('Invalid password or username');
         }

@@ -29,7 +29,7 @@ router.post("/login", (req, res) => {
     .then(userId => {
       if (!userId) {
         const error = "Invalid username or password";
-        res.render("users/login", { error: error });
+        res.render("users/login", { error: error, city: false });
       } else {
         req.session.user = userId;
         res.redirect(`/profile/public/${userId}`);
