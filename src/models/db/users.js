@@ -3,11 +3,11 @@ const db = require('./db');
 const create = user => {
   return db.query(`
     INSERT INTO
-      users (full_name, email, encrypted_password)
+      users (full_name, email, encrypted_password, current_city)
     VALUES
-      ($1::text, $2::text, $3::text)
+      ($1::text, $2::text, $3::text, $4::text)
   `,
-  [user.full_name, user.email, user.encrypted_password])
+  [user.full_name, user.email, user.encrypted_password, user.current_city])
   .catch( error => {
     console.error({ message: 'Error occurred while executing users.create',
     arguments: arguments });

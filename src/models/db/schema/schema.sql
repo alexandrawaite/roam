@@ -8,7 +8,7 @@ CREATE TABLE users (
   full_name VARCHAR(255) NOT NULL,
   email VARCHAR(255) UNIQUE NOT NULL,
   encrypted_password VARCHAR(255) NOT NULL,
-  join_date timestamp DEFAULT current_date,
+  join_date DATE DEFAULT current_date,
   current_city VARCHAR(255) DEFAULT 'Enter current city here'
 );
 

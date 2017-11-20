@@ -297,6 +297,7 @@ a.pure-button-primary {
   position: absolute;
   top: 100px; left: 0; bottom: 0; right: 0;
   text-align: center;
+  z-index: 2000;
 }
 
 .post-section {
@@ -305,4 +306,9 @@ a.pure-button-primary {
   position: absolute;
   top: 100px; left: 0; bottom: 0; right: 0;
   text-align: right;
+  z-index: 1000;
+}
+
+.public-post {
+  margin: 20px;
 }
