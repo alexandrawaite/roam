@@ -89,11 +89,14 @@ router.get("/logout", (req, res) => {
 router.get("/show/:id", (req, res) => {
   const postId = req.params.id;
   cities.findByPostId(postId)
-  .then(() => {
-    posts.findById(postId)
-    .then(post => {
-      usersDb.findById(post.user_id)
-        .then(user => res.render("posts/post", { user, post, city: false }));
+  .then((citiesPost) => {
+    cities.findById(citiesPost.city_id)
+    .then((city) => {
+      posts.findById(postId)
+      .then(post => {
+        usersDb.findById(post.user_id)
+        .then(user => res.render("posts/post", { user, post, city}));
+      })
     })
   })
     .catch(error => next(error));

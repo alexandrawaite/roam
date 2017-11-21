@@ -288,25 +288,15 @@ a.pure-button-primary {
 /*Flex Box*/
 .flex-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
 }
 
 .profile-section {
-  width: 80%;
-  height: 50%;
-  position: absolute;
-  top: 100px; left: 0; bottom: 0; right: 0;
-  text-align: center;
-  z-index: 1000;
+  margin: 20px;
 }
 
 .post-section {
-  width: 80%;
-  height: 50%;
-  position: absolute;
-  top: 100px; left: 0; bottom: 0; right: 0;
-  text-align: right;
-  z-index: 1000;
+  margin: 20px;
 }
 
 .public-post {
