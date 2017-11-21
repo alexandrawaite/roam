@@ -9,23 +9,18 @@ const encryptPassword = (password) => {
 };
 
 const create = (user) => {
-  return encryptPassword(user.password)
-  .then((hash) => {
+  return encryptPassword(user.password).then((hash) => {
     user.encrypted_password = hash
     return db.create(user);
-  })
-  .catch( error => {
-    console.log('Error occurred while executing users.encryptPassword',
-    error);
+  }).catch(error => {
+    console.log('Error occurred while executing users.encryptPassword', error);
   });
 };
 
 const verify = (email, password) => {
-  return db.findByEmail(email)
-  .then((validUser) => {
+  return db.findByEmail(email).then((validUser) => {
     if (validUser) {
-      return bcrypt.compare(password, validUser.encrypted_password)
-      .then((result) => {
+      return bcrypt.compare(password, validUser.encrypted_password).then((result) => {
         if (result) {
           return validUser.id; //for session to login the user
         } else if (!validUser) {
@@ -35,8 +30,7 @@ const verify = (email, password) => {
     } else if (!validUser) {
       throw new Error('Invalid username or password');
     }
-  })
-  .catch( error => {
+  }).catch(error => {
     console.log('Error!', error);
   });
 };

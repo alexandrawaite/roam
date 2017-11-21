@@ -1,4 +1,4 @@
-const deleteButtons = document.getElementsByClassName('delete-button');
+const deleteButtons = document.getElementById('delete-button');
 
 function confirmDelete(post) {
   const button = post.target;

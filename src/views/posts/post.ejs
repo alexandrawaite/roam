@@ -1,19 +1,27 @@
 <%- include ../partials/header.ejs %>
-<br>
-<br>
-<br>
+  <br>
+  <br>
+  <br>
   <div class="flex-container">
     <div class="public-post">
       <img class="public-profile-image" src="http://via.placeholder.com/150x150">
-      <p name:"name">Name: <%= user.full_name %> </p>
-      <p name:"dateJoined">Date Joined: <%= user.join_date %> </p>
-      <p name:"currentCity">Current City: <%= user.current_city %> </p>
+      <p name: "name"><b>Name:</b>
+        <%= user.full_name %>
+      </p>
+      <p name: "dateJoined"><b>Date Joined:</b>
+        <%= user.join_date %>
+      </p>
+      <p name: "currentCity"><b>Current City:</b>
+        <%= user.current_city %>
+      </p>
     </div>
     <section class="public-post">
-      <h1><%= city.name %></h1>
-      <p><%= post.title %></p>
-      <p><%= post.body %></p>
+      <h1><a href="/cities/<%= city.id%>"><%= city.name %></a></h1>
+      <h2><%= post.title %></h2>
+      <p>
+        <%= post.body %>
+      </p>
     </section>
-</div>
+  </div>
 
-<%- include ../partials/footer.ejs %>
+  <%- include ../partials/footer.ejs %>

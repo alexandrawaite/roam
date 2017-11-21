@@ -1,28 +1,28 @@
 <%- include ../partials/header.ejs %>
-<br>
-<br>
-<br>
-<div class="flex-container">
-<h1>Update Profile</h1>
-</div>
-
-<div class="flex-container">
-<form class="pure-form pure-form-stacked" action="/user/update" method="POST">
-  <fieldset>
-    <div class="pure-control-group">
-  <label>Full Name:</label>
-    <input id="name" type="text" placeholder="Enter Full Name" name="full_name" required/>
+  <br>
+  <br>
+  <br>
+  <div class="flex-container">
+    <h1>Update Profile</h1>
   </div>
 
-  <div class="pure-control-group">
-  <label>Current City:</label>
-    <input id="city" type="text" placeholder="Enter Current City" name="current_city" required/>
-  </div>
+  <div class="flex-container">
+    <form class="pure-form pure-form-stacked" action="/user/update" method="POST">
+      <fieldset>
+        <div class="pure-control-group">
+          <label>Full Name:</label>
+          <input id="name" type="text" placeholder="Enter Full Name" name="full_name" required/>
+        </div>
 
-<div class="pure-controls">
-  <button type="submit" class="pure-button pure-button-primary">Submit</button>
-</div>
-</fieldset>
-</form>
+        <div class="pure-control-group">
+          <label>Current City:</label>
+          <input id="city" type="text" placeholder="Enter Current City" name="current_city" required/>
+        </div>
 
-<%- include ../partials/footer.ejs %>
+        <div class="pure-controls">
+          <button type="submit" class="pure-button pure-button-primary">Submit</button>
+        </div>
+      </fieldset>
+    </form>
+
+    <%- include ../partials/footer.ejs %>
