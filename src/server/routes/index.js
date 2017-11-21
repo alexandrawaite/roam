@@ -111,9 +111,11 @@ router.post("/user/update", (req, res) => {
 
 router.get("/cities/:id", (req, res) => {
   const { user } = req.session;
+  console.log("Who dat?....", user)
   const cityId = req.params.id;
   posts.findByCity(cityId)
   .then(posts => {
+    console.log("Which post?....", posts)
     cities.findById(cityId)
     .then(city => res.render("posts/city_page", { user, city, posts }));
   })
