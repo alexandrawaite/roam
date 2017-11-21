@@ -33,7 +33,26 @@ const findById = id => {
     });
 };
 
+const findByPostId = id => {
+  return db.oneOrNone(
+      `
+      SELECT * FROM
+        cities_posts
+      WHERE
+        post_id = $1
+    `,
+      [id]
+    )
+    .catch(error => {
+      console.error({
+        message: "Error occurred while executing posts.findById",
+        arguments: arguments
+      });
+    });
+};
+
 module.exports = {
   findByCity,
-  findById
+  findById,
+  findByPostId
 };

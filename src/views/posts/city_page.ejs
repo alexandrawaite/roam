@@ -20,13 +20,23 @@
 
     <div class="pure-g">
       <% posts.forEach(function(post) { %>
+        <% if (!isLoggedIn || user === post.user_id) {%>
       <div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
 
         <h3 class="content-subhead">
                       <i class="fa fa-heart"></i>
                       <a href="/show/<%= post.id %>"><%= post.title %></a>
+                      <% if (isLoggedIn) {%>
+                      <form action="/post/update/<%= post.id %>">
+                        <button class="pure-button pure-button-primary" type="Submit" name="edit-button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+                      </form>
+                      <form action="/post/delete/<%= post.id %>?_method=DELETE" method="POST">
+                        <button class="pure-button pure-button-primary" type="Submit" name="delete-button">          <i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                      </form>
+                      <%}%>
                   </h3>
       </div>
+      <%}%>
       <% }) %>
     </div>
   </div>
