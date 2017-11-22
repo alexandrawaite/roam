@@ -20,8 +20,10 @@
       <h1>Posts</h1>
       <% posts.forEach(function(post) {%>
         <span>
+          <b><%= city.name %>: </b>
         <ul>
-          <li><b><%= city.name %>: </b><a href="/show/<%= post.id %>"><%= post.title %></a></li>
+          <li>
+            <a href="/show/<%= post.id %>"><%= post.title %></a></li>
         </ul>
       </span>
         <% }) %>

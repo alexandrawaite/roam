@@ -51,8 +51,26 @@ const findByPostId = id => {
     });
 };
 
+const findByIdForCitiesPosts = id => {
+  return db.many(
+      `
+      SELECT * FROM
+        cities
+      WHERE id = $1
+    `,
+      [id]
+    )
+    .catch(error => {
+      console.error({
+        message: "Error occurred while executing posts.findById",
+        arguments: arguments
+      });
+    });
+};
+
 module.exports = {
   findByCity,
   findById,
-  findByPostId
+  findByPostId,
+  findByIdForCitiesPosts
 };

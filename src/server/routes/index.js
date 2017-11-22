@@ -68,9 +68,9 @@ router.get("/profile/public/:id", (req, res) => {
     .then(posts => {
       cities.findByPostId(posts[0].id)
       .then((citiesPost) => {
-        cities.findById(citiesPost.city_id)
+        cities.findByIdForCitiesPosts(citiesPost.city_id)
         .then((city) => {
-          return res.render("users/public_profile", {user, posts, city});
+          return res.render("users/public_profile", {user, posts, city: false});
         })
       })
     });
@@ -112,7 +112,10 @@ router.get("/show/:id", (req, res) => {
       posts.findById(postId)
       .then(post => {
         usersDb.findById(post.user_id)
-        .then(user => res.render("posts/post", {user, post, city}));
+        .then(user => {
+          user.join_date = moment(user.join_date).format("MMMM Do YYYY")
+          res.render("posts/post", {user, post, city})
+        });
       })
     })
   })

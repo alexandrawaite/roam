@@ -23,7 +23,8 @@
     <section class="post-section">
       <h1>Posts</h1>
       <% posts.forEach(function(post) {%>
-        <p><b>City: </b>
+        <p>
+          <b><%= city.name %>: </b>
           <a class="post-title" href="/show/<%= post.id %>">
             <%= post.title %>
           </a>
