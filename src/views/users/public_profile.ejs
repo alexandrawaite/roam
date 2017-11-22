@@ -21,7 +21,7 @@
       <% posts.forEach(function(post) {%>
         <span>
         <ul>
-          <li><a href="/show/<%= post.id %>"><%= post.title %></a></li>
+          <li><b><%= city.name %>: </b><a href="/show/<%= post.id %>"><%= post.title %></a></li>
         </ul>
       </span>
         <% }) %>
