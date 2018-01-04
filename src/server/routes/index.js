@@ -66,8 +66,9 @@ router.get("/profile/public/:id", (req, res) => {
     user.join_date = moment(user.join_date).format("MMMM Do YYYY")
     posts.findByUserId(user.id)
     .then(posts => {
-      cities.findByPostId(posts[0].id)
+       cities.findByPostId(posts[0].id)
       .then((citiesPost) => {
+        console.log("????", citiesPost)
         cities.findByIdForCitiesPosts(citiesPost.city_id)
         .then((city) => {
           return res.render("users/public_profile", {user, posts, city: false});

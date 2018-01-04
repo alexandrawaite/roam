@@ -52,7 +52,7 @@ const findByPostId = id => {
 };
 
 const findByIdForCitiesPosts = id => {
-  return db.many(
+  return db.oneOrNone(
       `
       SELECT * FROM
         cities
