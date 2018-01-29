@@ -1,0 +1,44 @@
+<%- include ../partials/header.ejs %>
+  <br>
+  <br>
+  <br>
+  <div class="flex-container">
+    <div class="profile-section">
+      <img class="profile-image" src="http://via.placeholder.com/150x150">
+      <p><b>Name:</b>
+        <a href="/profile/public/<%= user.id %>">
+          <%= user.full_name %>
+        </a>
+      </p>
+      <p><b>Date Joined:</b>
+        <%= user.join_date %>
+      </p>
+      <p><b>Current City:</b>
+        <%= user.current_city %>
+      </p>
+      <form action="/user/update/<%= user.id %>">
+        <button class="pure-button pure-button-primary" type="Submit" name="edit-button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+      </form>
+    </div>
+    <section class="post-section">
+      <h1>Posts</h1>
+      <% posts.forEach(function(post) {%>
+        <p>
+          <b><%= city.name %>: </b>
+          <a class="post-title" href="/show/<%= post.id %>">
+            <%= post.title %>
+          </a>
+        </p>
+        <div class="flex-container">
+          <form action="/post/update/<%= post.id %>">
+            <button class="pure-button pure-button-primary" type="Submit" name="edit-button"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+          </form>
+          <form action="/post/delete/<%= post.id %>?_method=DELETE" method="POST">
+            <button id="delete-button" class="pure-button pure-button-primary" type="Submit" name="delete-button">          <i class="fa fa-trash-o" aria-hidden="true"></i></button>
+          </form>
+        </div>
+        <% }) %>
+    </section>
+  </div>
+
+  <%- include ../partials/footer.ejs %>
